@@ -56,10 +56,6 @@ public class TicTacToe extends JFrame implements ActionListener {
 		end.setSize(300,100);
 	}
 
-	public static void main(String[] args) {
-		new TicTacToe();
-	}
-
 	public void actionPerformed(ActionEvent e) {
 		for(a = 1; a<10; a++) {
 				if (e.getSource() == t[a]) {
