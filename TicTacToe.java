@@ -69,7 +69,7 @@ public class TicTacToe extends JFrame implements ActionListener {
 						pressed [randomNum] = randomNum;
 						t[randomNum].setText("O");
 						t[randomNum].setEnabled(false);
-						t[randomNum].setBackground(Color.GREEN);
+						t[randomNum].setBackground(Color.RED);
 						break;	
 					}
 				}
