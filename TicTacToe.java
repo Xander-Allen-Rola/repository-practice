@@ -15,22 +15,27 @@ public class TicTacToe extends JFrame implements ActionListener {
 	int a, min = 1, max = 9;
 	int randomNum;
 	JFrame end;
-	JLabel wins;
+	JLabel wins, turn;
 	JButton again, exit;
-	JPanel buttons, w;
+	JPanel buttons, w, Grid;
 	
 	public TicTacToe () {
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setTitle("TicTacToe");
-		setLayout(new GridLayout (3, 3));
-		
+		setLayout(new BorderLayout());
+
+		Grid = new JPanel ();
+		Grid.setLayout(new GridLayout (3, 3));
 		for(a = 1; a<10; a++) {
 				t[a] = new JButton ();
 				t[a].setFont(new Font("Verdana", Font.BOLD, 50));
 				t[a].addActionListener(this);
-				add (t[a]);
+				Grid.add (t[a]);
 		}
-		
+		turn = new JLabel("PLAYER'S TURN");
+		turn.setHorizontalAlignment(SwingConstants.CENTER);
+		add(turn, BorderLayout.NORTH);
+		add(Grid, BorderLayout.CENTER);
 		setSize(500, 500);
 		setVisible(true);
 		
