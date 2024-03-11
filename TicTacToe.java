@@ -12,7 +12,7 @@ public class TicTacToe extends JFrame implements ActionListener {
 	
 	JButton t [] = new JButton [10];
 	int pressed [] = new int [10];
-	int a, min = 0, max = 8;
+	int a, min = 1, max = 9;
 	int randomNum;
 	JFrame end;
 	JLabel wins;
