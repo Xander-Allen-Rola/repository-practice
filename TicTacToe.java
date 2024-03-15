@@ -63,23 +63,22 @@ public class TicTacToe extends JFrame implements ActionListener {
 
 	public void actionPerformed(ActionEvent e) {
 		for(a = 1; a<10; a++) {
-				if (e.getSource() == t[a]) {
-					t[a].setText("X");
-					t[a].setEnabled(false);
-					t[a].setBackground(Color.BLUE);
-					pressed [a] = a;
-					while (true) {
-					randomNum = ThreadLocalRandom.current().nextInt(min, max + 1);					
-					if (pressed [randomNum] != randomNum) {
-						pressed [randomNum] = randomNum;
-						t[randomNum].setText("O");
-						t[randomNum].setEnabled(false);
-						t[randomNum].setBackground(Color.RED);
-						break;	
+			if (e.getSource() == t[a]) {
+				t[a].setText("X");
+				t[a].setEnabled(false);
+				t[a].setBackground(Color.BLUE);
+				pressed [a] = a;		
+				while(randomNum == pressed[randomNum] && !fullboard()){
+				System.out.println("hello");
+				randomNum = ThreadLocalRandom.current().nextInt(min, max + 1);	
+				}				
+				if (pressed [randomNum] != randomNum) {
+					pressed [randomNum] = randomNum;
+					t[randomNum].setText("O");
+					t[randomNum].setEnabled(false);
+					t[randomNum].setBackground(Color.RED);
 					}
 				}
-			
-			}
 		}
 			winner(1, 2, 3, "X", "Player wins!");
 			winner(4, 5, 6, "X", "Player wins!");
@@ -114,6 +113,27 @@ public class TicTacToe extends JFrame implements ActionListener {
 			new TicTacToe();
 		}
 	}
+
+	public static void wait(int ms){
+    try{
+        Thread.sleep(ms);
+    	}
+    catch(InterruptedException ex){
+        Thread.currentThread().interrupt();
+    	}
+	}
+
+	public boolean fullboard(){
+		boolean fullBoard = true;
+		for (int i = 1; i < 10; i++) {
+		  if (pressed[i] == 0) {
+			fullBoard = false;
+			break;
+		  }
+		}
+		return fullBoard;
+	}
+
 	public void winner (int x, int y, int z, String sym, String who) {
 		if (t[x].getText() == sym && t[y].getText() == sym && t[z].getText() == sym) {
 		t[x].setBackground(Color.GREEN);
